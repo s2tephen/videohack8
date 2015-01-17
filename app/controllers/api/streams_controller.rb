@@ -2,6 +2,8 @@ require 'open-uri'
 require 'json'
 
 class Api::StreamsController < ApplicationController
+
+  # for example {base_url}/api/streams/search?q=cats
   def search
 
     search_terms = URI::encode(params[:q])
