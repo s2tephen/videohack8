@@ -1,1 +1,0 @@
-YoutubeClient = YouTubeIt::Client.new(:dev_key => ENV['youtube_api_key'])

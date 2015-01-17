@@ -3,18 +3,16 @@ require 'json'
 
 class Api::StreamsController < ApplicationController
   def search
-    # search_terms = params[:q]
-    # videos = YoutubeClient.videos_by(:query => search_terms, :event_type => "live", :type => "video")
-    # #make call to youtube API
-    # #return results as JSON
 
     search_terms = URI::encode(params[:q])
 
     base_url = "https://www.googleapis.com/youtube/v3"
-    url = "#{base_url}/search?part=snippet&q=#{search_terms}&type=video&eventType=live&key=#{ENV['youtube_api_key']}"
-    videos = open(url).read
+    url = "#{base_url}/search?q=#{search_terms}&type=video&eventType=live&key=#{ENV['youtube_api_key']}&part=snippet"
+    videos = JSON.parse(open(url).read)
+    video_urls = videos["items"].map{|item| "https://www.youtube.com/watch?v=#{item['id']['videoId']}" }
 
-    render json: JSON.parse(videos)
+
+    render json: video_urls.map{ |url| EmbedlyClient.extract(:url => url) }
   end
 end
 
