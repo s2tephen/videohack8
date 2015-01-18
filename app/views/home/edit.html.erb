@@ -85,7 +85,7 @@
             var title = result[0].table.title,
                 desc = result[0].table.description,
                 url = result[0].table.url,
-                embedly_url = result[0].table.media.html;
+                embedly_url = result[0].table.media.table.html;
             results.push({
               title : title,
               description : desc,
@@ -110,6 +110,12 @@
     });
     curator.on( 'make_active', function ( e ) {
       curator.set( 'active_stream', e.context );
+      
+      myFirebaseRef.child('event_info').child('active_stream').set({
+        title: e.context.title,
+        description: e.context.description,
+        html : e.context.embedly_url
+      });
     });
 
     fb_url = 'https://flickering-inferno-7644.firebaseio.com/';
