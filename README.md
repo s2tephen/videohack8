@@ -1,4 +1,4 @@
-# videohack8
+# VizMix
 The Internet's control room.
 
 ###About
@@ -14,7 +14,7 @@ This app was built for the [Hacking Journalism](http://hackingjournalism.com) Ha
   - [Sonya Moore](http://github.com/sonyamo)
 
 ###What?
-The [insert app name here] is a tool that allows online content producers to not only create, produce and broadcast live streams, but also curate an experience that pulls video from live events and allows the audience to watch and discuss events as they unfold.
+VizMix is a tool that allows online content producers to not only create, produce and broadcast live streams, but also curate an experience that pulls video from live events and allows the audience to watch and discuss events as they unfold.
 
 ###How?
 The magic comes from taking advantage of popular livestreaming trends that provide a more interactive experience by making reactions part of the action. It gives the content producer the creating power equivalent to a control room so that reports and editors who don't work with a dedicated video team (or are chasing multimedia conent on their own) can act as producer, editor and reporter of their own online broadcasts.
@@ -27,7 +27,7 @@ This would allow reporters and editors that don't work with large teams or dedic
 Existing platforms incorporate live streaming with chatting, comments, and social media, but not entirely in one place. This tool will bring those elements together, but with a focus on news events so the audience can simply watch curated video content from around the web with the ability to chat and comment all in the same window.
 
 ###Notable
-One key feature is the alert system that informs both audience and curator of key moments. Triggered by [insert trigger here], the platform allows for users to watch videos as they normally would, but be informed of key moments in the stream to which they should pay attention.
+One key feature is the alert system that informs both audience and curator of key moments. Triggered by the curator, the platform allows for users to watch videos as they normally would, but be informed of key moments in the stream to which they should pay attention.
 
 ###Technologies Used
 - Firebase

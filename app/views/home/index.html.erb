@@ -52,6 +52,7 @@
       });
     });
     myFirebaseRef.child('notifications').on('value', function(data) {
+      
       console.log(data);
       $('audio').play();
     })
