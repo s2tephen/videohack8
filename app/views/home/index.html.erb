@@ -1,11 +1,11 @@
-<%= audio_tag("sport_air_horn_reverb.mp3", :autoplay => false) %>
+<%= audio_tag("sport_air_horn_reverb.mp3", :class => 'notification', :autoplay => false) %>
 
 <div id="content" class="home">
 </div>
 
 <script id="viewer" type="text/ractive">
   <header>
-    The Internet Control Room
+    Cume: The Internet Control Room
   </header>
   <div class="left_pane">
     <h1>{{title}}</h1>
@@ -27,6 +27,9 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+    // setTimeout(function() {
+    //   $('audio').setAttribute("class", "notification");
+    // }, 3000);
     viewer = new Ractive({
       el: $('#content'),
       template: '#viewer',
@@ -57,7 +60,6 @@
     });
 
     myFirebaseRef.child('notifications').on('child_added', function(data) {
-      $('audio').attr("class", "notification");
       $('.notification')[0].play();
     });
   });
