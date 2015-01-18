@@ -1,4 +1,7 @@
-<div id="content" class="home"></div>
+  <%= audio_tag('sport_air_horn_reverb.mp3') %>
+
+<div id="content" class="home">
+</div>
 
 <script id="viewer" type="text/ractive">
   <header>
@@ -48,5 +51,9 @@
         player.play();
       });
     });
+    myFirebaseRef.child('notifications').on('value', function(data) {
+      console.log(data);
+      $('audio').play();
+    })
   });
 </script>

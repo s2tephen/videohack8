@@ -130,5 +130,8 @@
     $('.btn-switch').click(function() {
       myFirebaseRef.child('event_info').child('active_stream').set({ html: htmls[0] });
     });
+    $('.alert-img').on('click', function() {
+      myFirebaseRef.child('notifications').set({ date: new Date() })
+    });
   });
 </script>
