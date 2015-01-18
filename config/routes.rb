@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   namespace :api, api_options  do
     get 'streams/search' => 'streams#search'
   end
+
+  get 'home/index' => 'home#index'
+
+  root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
