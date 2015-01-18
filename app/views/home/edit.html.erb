@@ -5,12 +5,17 @@
     The Internet Control Room
   </header>
   <div class="left_pane">
-    <input class="stream_title" type="text" value="{{title}}" />
-    <textarea class="stream_description" value="{{description}}" />
-    <span>ALERT</span>
+    <div class="alert">
+      <%= image_tag "alert.png", class: "alert-img" %>
+      <h5>ALERT</h5>
+    </div>  
+    <div class="stream-heading">
+      <input class="stream_title" type="text" value="{{title}}" />
+      <textarea class="stream_description" value="{{description}}" />
+    </div>
     <div class="control_panel">
       <div class="active_stream">
-        {{active_stream.title}}
+        <p>{{active_stream.title}}</p>
         <input class="btn-switch" type="button" value="Switch video"></input>
       </div>
       <div class="sub_panel">
@@ -114,7 +119,6 @@
 
     $('.stream_title').blur(function() {
       myFirebaseRef.child('event_info').update({ title: $(this).val() });
-      console.log($(this).val());
     });
 
     $('.stream_description').blur(function() {
