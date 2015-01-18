@@ -6,12 +6,15 @@
   </header>
   <div class="left_pane">
     <h1>{{title}}</h1>
-    <h5>{{description}}</h5>
+    <h4>{{description}}</h4>
     <div class="control_panel">
       <div class="active_stream">
-        {{active_stream.title}}
+        <p>{{active_stream.title}}</p>
         <iframe class="embedly-embed" src="" width="500" height="281" scrolling="no" frameborder="0" allowfullscreen></iframe>
       </div>
+      <form>
+        <input type="checkbox" /> Notifications: On/Off
+      </form>  
     </div>
   </div>
   <div class="right_pane">
