@@ -7,17 +7,20 @@
 }
 
 .left_pane h1,
-.left_pane h4 {
+.left_pane h4,
+.active_stream p {
   border: 1px solid black;
   padding: 5px 10px;
   width: 600px;
 }
 
-.left_pane h4 {
+.left_pane h4,
+.active_stream p {
   margin-top: 0;
 }
 
-.left_pane h1 {
+.left_pane h1,
+.left_pane h4 {
   margin-bottom: 10px;
 }
 
@@ -25,7 +28,7 @@
   width: 600px;
   border: 1px solid black;
   padding: 5px 10px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .active_stream p {
