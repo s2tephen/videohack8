@@ -5,9 +5,14 @@
     The Internet Control Room
   </header>
   <div class="left_pane">
-    <h1>{{title}}</h1>
-    <h4>{{description}}</h4>
-    <span>ALERT</span>
+    <div class="alert">
+      <%= image_tag "alert.png", class: "alert-img" %>
+      <h5>ALERT</h5>
+    </div>  
+    <div class="stream-heading">
+      <h1>{{title}}</h1>
+      <h4>{{description}}</h4>
+    </div>  
     <div class="control_panel">
       <div class="active_stream">
         <p>{{active_stream.title}}</p>
