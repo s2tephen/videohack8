@@ -1,1 +1,49 @@
-<h1>This is the viewer interface</h1>
+<div id="content"></div>
+
+<script id="viewer" type="text/ractive">
+  <header>
+    The Internet Control Room
+  </header>
+  <div class="left_pane">
+    <h1>{{title}}</h1>
+    <h5>{{description}}</h5>
+    <div class="control_panel">
+      <div class="active_stream">
+        {{active_stream.title}}
+        <iframe class="embedly-embed" src="" width="500" height="281" scrolling="no" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="right_pane">
+    <div id="#chat_room"></div>
+  </div>
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    viewer = new Ractive({
+      el: $('#content'),
+      template: '#viewer',
+      data: {
+        title: "OMG ITS GOIN DOWN",
+        description:"srsly...",
+        active_stream: {
+            title: 'Main Live Stream',
+            description: 'descr goes hurr',
+            url: 'at this url',
+        }
+      }
+    })
+
+    player = new playerjs.Player($('.embedly-embed')[0]);
+
+    fb_url = 'https://flickering-inferno-7644.firebaseio.com/';
+    myFirebaseRef = new Firebase( fb_url );
+    myFirebaseRef.child('event_info').child('active_stream').on('value', function(data) {
+      var newSrc = data.val() ? data.val().html.match('src="[^"]+"')[0].slice(5,-1) : '';
+      $('.embedly-embed').attr('src', newSrc).load(function() {
+        player.play();
+      });
+    });
+  });
+</script>
