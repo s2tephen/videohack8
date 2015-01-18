@@ -2,7 +2,7 @@
 
 <script id="curator" type="text/ractive">
   <header>
-    The Internet Control Room
+    Control Room <span class="welcome_message">Welcome, {{byline}}</span>
   </header>
   <div class="left_pane">
     <div class="alert">
@@ -20,7 +20,10 @@
       <div class="sub_panel">
         <ul class="featured_streams">
           {{#featured_streams}}
-            <li on-click="make_active">{{title}}</li>
+            <li on-click="make_active">
+              <img src="{{thumbnail}}">
+              {{title}}
+            </li>
           {{/featured_streams}}
         </ul>
       </div>
@@ -35,7 +38,8 @@
       {{#if search_results.length}}
         <ul>
           {{#search_results}}
-            <li on-click="add_featured" class="search_resut">
+            <li on-click="add_featured" class="search_result">
+              <img src="{{thumbnail}}">
               {{title}}
             </li>
           {{/search_results}}
@@ -44,7 +48,7 @@
         {{#if event_query != ''}}
           <p>No Results.</p>
         {{else}}
-          <p>Please enter a query</p>
+          <p>Please enter a query.</p>
         {{/if}}
       {{/if}}
     {{/if}}
@@ -58,8 +62,9 @@
       el: $('#content'),
       template: '#curator',
       data: {
-        title: "OMG ITS GOIN DOWN",
-        description:"srsly...",
+        title: "Title of Broadcast",
+        description:"Short description of what the broadcast is about and where its sources are from.",
+        byline: "Control Room Team",
         active_stream: {},
         featured_streams: [],
           search_results: []
@@ -79,14 +84,17 @@
         .done( function ( response ) {
           var results = [];
           response.forEach( function ( result, i ) {
+            console.log(result);
             var title = result[0].table.title,
                 desc = result[0].table.description,
                 url = result[0].table.url,
+                thumbnail = result[0].table.images[0] ? result[0].table.images[0].url : 'http://i.ytimg.com/vi/0RzTXFF0OYE/hqdefault.jpg',
                 embedly_url = result[0].table.media.table.html;
             results.push({
               title : title,
               description : desc,
               url : url,
+              thumbnail : thumbnail,
               embedly_url : embedly_url
             });
           });
@@ -111,7 +119,8 @@
       myFirebaseRef.child('event_info/active_stream').set({
         title: e.context.title,
         description: e.context.description,
-        html : e.context.embedly_url
+        thumbnail: e.context.thumbnail,
+        html: e.context.embedly_url
       });
     });
 

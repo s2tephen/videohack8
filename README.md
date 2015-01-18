@@ -1,4 +1,4 @@
-# VizMix
+# Cume
 The Internet's control room.
 
 ###About
@@ -14,7 +14,7 @@ This app was built for the [Hacking Journalism](http://hackingjournalism.com) Ha
   - [Sonya Moore](http://github.com/sonyamo)
 
 ###What?
-VizMix is a tool that allows online content producers to not only create, produce and broadcast live streams, but also curate an experience that pulls video from live events and allows the audience to watch and discuss events as they unfold.
+Cume is a tool that allows online content producers to not only create, produce and broadcast live streams, but also curate an experience that pulls video from live events and allows the audience to watch and discuss events as they unfold.
 
 ###How?
 The magic comes from taking advantage of popular livestreaming trends that provide a more interactive experience by making reactions part of the action. It gives the content producer the creating power equivalent to a control room so that reports and editors who don't work with a dedicated video team (or are chasing multimedia content on their own) can act as producer, editor and reporter of their own online broadcasts.
