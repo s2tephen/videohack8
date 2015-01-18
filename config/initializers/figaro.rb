@@ -1,0 +1,1 @@
+Figaro.require_keys("youtube_api_key", "embedly_api_key", "livestream_api_key")
