@@ -2,7 +2,7 @@
 
 <script id="curator" type="text/ractive">
   <header>
-    The Internet Control Room
+    Control Room <span class="welcome_message">Welcome, {{byline}}</span>
   </header>
   <div class="left_pane">
     <div class="alert">
@@ -44,7 +44,7 @@
         {{#if event_query != ''}}
           <p>No Results.</p>
         {{else}}
-          <p>Please enter a query</p>
+          <p>Please enter a query.</p>
         {{/if}}
       {{/if}}
     {{/if}}
@@ -58,8 +58,9 @@
       el: $('#content'),
       template: '#curator',
       data: {
-        title: "OMG ITS GOIN DOWN",
-        description:"srsly...",
+        title: "Title of Broadcast",
+        description:"Short description of what the broadcast is about and where its sources are from.",
+        byline: "Control Room Team",
         active_stream: {},
         featured_streams: [],
           search_results: []

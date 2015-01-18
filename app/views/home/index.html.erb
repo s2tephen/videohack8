@@ -16,7 +16,7 @@
         <iframe class="embedly-embed" src="" width="500" height="281" scrolling="no" frameborder="0" allowfullscreen></iframe>
       </div>
       <form>
-        <input type="checkbox" /> Notifications: On/Off
+        <input type="checkbox" checked/> Notifications: On/Off
       </form>  
     </div>
   </div>
@@ -31,8 +31,9 @@
       el: $('#content'),
       template: '#viewer',
       data: {
-        title: "",
-        description:"",
+        title: "Title of Broadcast",
+        description:"Short description of what the broadcast is about and where its sources are from.",
+        byline: "Control Room Team",
         active_stream: {
             title: '',
             description: '',
