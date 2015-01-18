@@ -21,22 +21,33 @@
       <div class="sub_panel">
         <ul class="featured_streams">
           {{#featured_streams}}
-            <li>{{title}}</li>
+            <li on-click="make_active">{{title}}</li>
           {{/featured_streams}}
         </ul>
       </div>
-    </div>
   </div>
   <div class="right_pane">
     <h3>Live Streams</h3>
     <input type="search" id="event_search" value="{{event_query}}">
-    <ul>
-      {{#search_results}}
-        <li class="search_resut">
-          {{title}}
-        </li>
-      {{/search_results}}
-    </ul>
+    {{#if searching}}
+      <p>Searching.</p>
+    {{else}}
+      {{#if search_results.length}}
+        <ul>
+          {{#search_results}}
+            <li on-click="add_featured" class="search_resut">
+              {{title}}
+            </li>
+          {{/search_results}}
+        </ul>
+      {{else}}
+        {{#if event_query != ''}}
+          <p>No Results.</p>
+        {{else}}
+          <p>Please enter a query</p>
+        {{/if}}
+      {{/if}}
+    {{/if}}
     <div id="#chat_room"></div>
   </div>
 </script>
@@ -52,57 +63,60 @@
       data: {
         title: "OMG ITS GOIN DOWN",
         description:"srsly...",
-        active_stream: {
-            title: 'Main Live Stream',
-            description: 'descr goes hurr',
-            url: 'at this url',
-        },
-        featured_streams: [
-            {
-              title: 'LS 1',
-              description: 'desc',
-              url: 'url_goes_here'
-            },
-            {
-              title: 'LS 2',
-              description: 'desc',
-              url: 'url_goes_here'
-            },
-            {
-              title: 'LS 3',
-              description: 'desc',
-              url: 'url_goes_here'
-            },
-            {
-              title: 'LS 4',
-              description: 'desc',
-              url: 'url_goes_here'
-            }
-          ],
-          search_results: [
-          {
-            title: 'LS 1',
-            description: 'desc',
-            url: 'url_goes_here'
-          },
-          {
-            title: 'LS 2',
-            description: 'desc',
-            url: 'url_goes_here'
-          },
-          {
-            title: 'LS 3',
-            description: 'desc',
-            url: 'url_goes_here'
-          },
-          {
-            title: 'LS 4',
-            description: 'desc',
-            url: 'url_goes_here'
-          }
-        ]
+        active_stream: {},
+        featured_streams: [],
+          search_results: []
       }
-    })
+    });
+    curator.observe( 'event_query', function ( new_query ) {
+      if ( typeof new_query != 'undefined' && new_query != '' ) {
+        if ( typeof query != 'undefined' )
+            query.abort();
+
+        query = $.ajax({
+          url : '/api/streams/search?q=' + new_query,
+          beforeSend : function () {
+            curator.set({searching:true});
+          }
+        })
+        .done( function ( response ) {
+          var results = [];
+          response.forEach( function ( result, i ) {
+            var title = result[0].table.title,
+                desc = result[0].table.description,
+                url = result[0].table.url,
+                embedly_url = result[0].table.media.table.html;
+            results.push({
+              title : title,
+              description : desc,
+              url : url,
+              embedly_url : embedly_url
+            });
+          });
+          curator.set( 'search_results' , results );
+        })
+        .fail( function ( ) {
+          curator.set( 'search_results', [] );
+        })
+        .always( function ( ) {
+          curator.set( 'searching', false );
+        });
+      }
+
+    });
+    curator.on( 'add_featured', function ( e ) {
+      curator.push( 'featured_streams', e.context );
+
+    });
+    curator.on( 'make_active', function ( e ) {
+      curator.set( 'active_stream', e.context );
+      
+      myFirebaseRef.child('event_info').child('active_stream').set({
+        title: e.context.title,
+        description: e.context.description,
+        html : e.context.embedly_url
+      });
+    });
 
     fb_url = 'https://flickering-inferno-7644.firebaseio.com/';
     myFirebaseRef = new Firebase( fb_url );
