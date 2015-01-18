@@ -2,58 +2,117 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.left_pane {
-  margin-left: 50px;
+.home {
+  .left_pane {
+    margin-left: 50px;
+  }
+
+  .left_pane h1,
+  .left_pane h4,
+  .active_stream p {
+    border: 1px solid black;
+    padding: 5px 10px;
+    width: 480px;
+  }
+
+  .left_pane h4,
+  .active_stream p {
+    margin-top: 0;
+  }
+
+  .left_pane h1,
+  .left_pane h4 {
+    margin-bottom: 10px;
+  }
+
+  .control_panel form {
+    width: 480px;
+    border: 1px solid black;
+    padding: 5px 10px;
+    margin-top: 20px;
+  }
+
+  .active_stream p {
+    display: block;
+  }
+
+  .alert {
+    width: 80px;
+    margin-top: 20px;
+    float: left;
+  }
+
+  .stream-heading {
+    float: left;
+
+  }
+
+  .alert-img {
+    width: 70px;
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .alert h5 {
+    margin: 0 10px;
+  }
+  
 }
 
-.left_pane h1,
-.left_pane h4,
-.active_stream p {
-  border: 1px solid black;
-  padding: 5px 10px;
-  width: 600px;
-}
+.admin {
+  .left_pane {
+    margin-left: 50px;
+  }
 
-.left_pane h4,
-.active_stream p {
-  margin-top: 0;
-}
+  .left_pane h1,
+  .left_pane h4,
+  .active_stream p {
+    border: 1px solid black;
+    padding: 5px 10px;
+    width: 480px;
+  }
 
-.left_pane h1,
-.left_pane h4 {
-  margin-bottom: 10px;
-}
+  .left_pane h4,
+  .active_stream p {
+    margin-top: 0;
+  }
 
-.control_panel form {
-  width: 600px;
-  border: 1px solid black;
-  padding: 5px 10px;
-  margin-top: 20px;
-}
+  .left_pane h1,
+  .left_pane h4 {
+    margin-bottom: 10px;
+  }
 
-.active_stream p {
-  display: block;
-  margin-top: 119px;
-  margin-left: 80px;
-}
+  .control_panel form {
+    width: 480px;
+    border: 1px solid black;
+    padding: 5px 10px;
+    margin-top: 20px;
+  }
 
-.alert {
-  width: 80px;
-  margin-top: 20px;
-  float: left;
-}
+  .active_stream p {
+    display: block;
+    margin-top: 118px;
+    margin-left: 80px;
+  }
 
-.stream-heading {
-  float: left;
+  .alert {
+    width: 80px;
+    margin-top: 20px;
+    float: left;
+  }
 
-}
+  .stream-heading {
+    float: left;
 
-.alert-img {
-  width: 70px;
-  display: block;
-  margin-bottom: 0;
-}
+  }
 
-.alert h5 {
-  margin: 0 10px;
+  .alert-img {
+    width: 70px;
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .alert h5 {
+    margin: 0 10px;
+  }
 }
