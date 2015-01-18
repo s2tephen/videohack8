@@ -14,18 +14,18 @@ This would allow reporters and editors that don't work with large teams or dedic
 
 Existing platforms incorporate live streaming with chatting, comments, and social media, but not entirely in one place. This tool will bring those elements together, but with a focus on news events so the audience can simply watch curated video content from around the web with the ability to chat and comment all in the same window.
 
-###How
+###Notable
 One key feature is the alert system that informs both audience and curator of key moments. Triggered by [insert trigger here], the platform allows for users to watch videos as they normally would, but be informed of key moments in the stream to which they should pay attention.
 
 ###Technologies Used
-Firebase
-APIs  
-  Embedly
-  YouTube
-Ruby on Rails
-jQuery
-Ractive.js
-Player.js
+- Firebase
+- APIs  
+  - Embedly
+  - YouTube
+- Ruby on Rails
+- jQuery
+- Ractive.js
+- Player.js
 
 ###Obstacles
 Ustream and Livestream APIs were impossible to integrate in the time given.
