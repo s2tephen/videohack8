@@ -4,14 +4,14 @@ The Internet's control room.
 ###About
 This app was built for the [Hacking Journalism](http://hackingjournalism.com) Hackathon.
 * **Team**
-- [Cassie Tarakajian](http://github.com/catarak)
-- [Denise Burgess](http://github.com/deniseb89)
-- [Katie Marriner](http://github.com/katiemarriner)
-- [Marcus Moretti](http://github.com/imwm)
-- [Michelle Lee](http://github.com/myhlee)
-- [Scott Gelin](http://github.com/scottgelin)
-- [Stephen Suen](http://github.com/s2tephen)
-- [Sonya Moore](http://github.com/sonyamo)
+  - [Cassie Tarakajian](http://github.com/catarak)
+  - [Denise Burgess](http://github.com/deniseb89)
+  - [Katie Marriner](http://github.com/katiemarriner)
+  - [Marcus Moretti](http://github.com/imwm)
+  - [Michelle Lee](http://github.com/myhlee)
+  - [Scott Gelin](http://github.com/scottgelin)
+  - [Stephen Suen](http://github.com/s2tephen)
+  - [Sonya Moore](http://github.com/sonyamo)
 
 ###What?
 The [insert app name here] is a tool that allows online content producers to not only create, produce and broadcast live streams, but also curate an experience that pulls video from live events and allows the audience to watch and discuss events as they unfold.
