@@ -14,7 +14,7 @@ class Api::StreamsController < ApplicationController
     video_urls = videos["items"].map{|item| "https://www.youtube.com/watch?v=#{item['id']['videoId']}" }
 
 
-    render json: video_urls.map{ |url| EmbedlyClient.extract(:url => url) }
+    render json: video_urls.map{ |url| EmbedlyClient.extract(:url => url, :autoplay => true) }
   end
 end
 

@@ -10,13 +10,12 @@
       <h5>ALERT</h5>
     </div>  
     <div class="stream-heading">
-      <h1>{{title}}</h1>
-      <h4>{{description}}</h4>
-    </div>  
+      <input class="stream_title" type="text" value="{{title}}" />
+      <textarea class="stream_description" value="{{description}}" />
+    </div>
     <div class="control_panel">
       <div class="active_stream">
         <p>{{active_stream.title}}</p>
-        <input class="btn-switch" type="button" value="Switch video"></input>
       </div>
       <div class="sub_panel">
         <ul class="featured_streams">
@@ -25,6 +24,7 @@
           {{/featured_streams}}
         </ul>
       </div>
+    </div>
   </div>
   <div class="right_pane">
     <h3>Live Streams</h3>
@@ -53,9 +53,6 @@
 </script>
         
 <script type="text/javascript">
-  var htmls = ['<iframe class="embedly-embed" src="//cdn.embedly.com/widgets/media.html?src=http%3A%2F%2Fwww.youtube.com%2Fembed%2FMRujbSn6pUU%3Ffeature%3Doembed&url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DMRujbSn6pUU&image=http%3A%2F%2Fi.ytimg.com%2Fvi%2FMRujbSn6pUU%2Fhqdefault.jpg&key=internal&type=text%2Fhtml&schema=youtube" width="500" height="281" scrolling="no" frameborder="0" allowfullscreen></iframe>',
-    '<iframe class="embedly-embed" src="//cdn.embedly.com/widgets/media.html?src=http%3A%2F%2Fnew.livestream.com%2Faccounts%2F3827561%2Fevents%2F2074586%2Fplayer%3Fwidth%3D640%26height%3D360&url=http%3A%2F%2Fnew.livestream.com%2FNewsChannel5Plus%2Flive&image=http%3A%2F%2Fimg.new.livestream.com%2Fevents%2F00000000001fa7da%2Ff3ee5322-6706-430c-8a17-43a8b7968e92.png&key=internal&type=text%2Fhtml&schema=livestream" width="500" height="281" scrolling="no" frameborder="0" allowfullscreen></iframe>'];
-
   $(document).ready(function(){
     curator = new Ractive({
       el: $('#content'),
@@ -71,7 +68,7 @@
     curator.observe( 'event_query', function ( new_query ) {
       if ( typeof new_query != 'undefined' && new_query != '' ) {
         if ( typeof query != 'undefined' )
-            query.abort();
+          query.abort();
 
         query = $.ajax({
           url : '/api/streams/search?q=' + new_query,
@@ -111,27 +108,26 @@
     curator.on( 'make_active', function ( e ) {
       curator.set( 'active_stream', e.context );
       
-      myFirebaseRef.child('event_info').child('active_stream').set({
+      myFirebaseRef.child('event_info/active_stream').set({
         title: e.context.title,
         description: e.context.description,
         html : e.context.embedly_url
       });
     });
 
-    fb_url = 'https://flickering-inferno-7644.firebaseio.com/';
+    fb_url = 'https://shining-torch-9827.firebaseio.com/';
     myFirebaseRef = new Firebase( fb_url );
 
-    myFirebaseRef.child('event_info').child('active_stream').set({ html: htmls[0] });
-
-    myFirebaseRef.child('event_info').child('active_stream').on('value', function(data) {
-      htmls.push(htmls.shift());
+    $('.stream_title').blur(function() {
+      myFirebaseRef.child('event_info').update({ title: $(this).val() });
     });
 
-    $('.btn-switch').click(function() {
-      myFirebaseRef.child('event_info').child('active_stream').set({ html: htmls[0] });
+    $('.stream_description').blur(function() {
+      myFirebaseRef.child('event_info').update({ description: $(this).val() });
     });
-    $('.alert-img').on('click', function() {
-      myFirebaseRef.child('notifications').set({ date: new Date() })
+
+    $('.alert').click(function() {
+      myFirebaseRef.child('notifications').push({ test: true });
     });
   });
 </script>
